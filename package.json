@@ -1,6 +1,6 @@
 {
   "name": "2p-server",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "main": "dist/index.ts",
   "types": "dist/index.d.ts",
@@ -32,9 +32,9 @@
     "dist/**/!(*.tsbuildinfo)"
   ],
   "scripts": {
-    "prepare": "echo ABOBA prepare >> aboba.txt && tsc",
-    "prepack": "echo ABOBA prepack >> aboba.txt && tsc",
-    "preinstall": "tsc",
+    "prepack": "echo ABOBA prepare >> aboba.txt",
+    "prepare": "echo ABOBA prepare >> aboba.txt",
+    "preinstall": "echo ABOBA preinstall >> aboba.txt && tsc",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "up:major": "yarn version --major && git push && git push --tags",
@@ -55,7 +55,7 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "2p-core": "github:smithjke/2p-core#v0.3.0",
+    "2p-core": "github:smithjke/2p-core#v0.3.11",
     "fastify": "^4.6.0"
   }
 }
