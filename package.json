@@ -1,6 +1,6 @@
 {
   "name": "2p-server",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/index.ts",
   "types": "dist/index.d.ts",
