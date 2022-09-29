@@ -2,9 +2,42 @@
   "name": "2p-server",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./api": {
+      "types": "./dist/api/index.d.ts",
+      "node": "./dist/api/index.js",
+      "require": "./dist/api/index.js"
+    },
+    "./crud": {
+      "types": "./dist/crud/index.d.ts",
+      "node": "./dist/crud/index.js",
+      "require": "./dist/crud/index.js"
+    },
+    "./mongo": {
+      "types": "./dist/mongo/index.d.ts",
+      "node": "./dist/mongo/index.js",
+      "require": "./dist/mongo/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "dist/**/!(*.tsbuildinfo)"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preinstall": "tsc",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "up:major": "yarn version --major && git push && git push --tags",
+    "up:minor": "yarn version --minor && git push && git push --tags",
+    "up:patch": "yarn version --patch && git push && git push --tags"
   },
   "repository": {
     "type": "git",

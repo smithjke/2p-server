@@ -74,3 +74,5 @@
 //       .where('_id', id);
 //   }
 // }
+
+export const mongo = false;
