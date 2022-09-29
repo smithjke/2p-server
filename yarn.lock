@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"2p-core@github:smithjke/2p-core#v0.3.0":
-  version "0.3.0"
-  resolved "https://codeload.github.com/smithjke/2p-core/tar.gz/63d8c96bc475f68c3db16e3643d1f186c41f6d2c"
+"2p-core@github:smithjke/2p-core#v0.3.11":
+  version "0.3.11"
+  resolved "https://codeload.github.com/smithjke/2p-core/tar.gz/49c12895459c3c810658163e0e187a1527dfafca"
   dependencies:
     "@sinclair/typebox" "^0.24.44"
     axios "^0.27.2"
