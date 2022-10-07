@@ -3,7 +3,7 @@ on:
   release:
     types: [created]
 jobs:
-  build_and_publish:
+  build-and-publish:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -16,6 +16,8 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@smithjke'
       - run: yarn
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: yarn build
       - run: yarn publish
         env:
