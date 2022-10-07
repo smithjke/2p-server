@@ -2,13 +2,6 @@
 # yarn lockfile v1
 
 
-"2p-core@github:smithjke/2p-core#v0.3.11":
-  version "0.3.11"
-  resolved "https://codeload.github.com/smithjke/2p-core/tar.gz/49c12895459c3c810658163e0e187a1527dfafca"
-  dependencies:
-    "@sinclair/typebox" "^0.24.44"
-    axios "^0.27.2"
-
 "@fastify/ajv-compiler@^3.1.1":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@fastify/ajv-compiler/-/ajv-compiler-3.3.1.tgz#7045dbf23c11c42b50011ccc36998cd624856e5d"
@@ -39,6 +32,14 @@
   version "0.24.44"
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.44.tgz#0a0aa3bf4a155a678418527342a3ee84bd8caa5c"
   integrity sha512-ka0W0KN5i6LfrSocduwliMMpqVgohtPFidKdMEOUjoOFCHcOOYkKsPRxfs5f15oPNHTm6ERAm0GV/+/LTKeiWg==
+
+"@smithjke/2p-core@0.5.1":
+  version "0.5.1"
+  resolved "https://npm.pkg.github.com/download/@smithjke/2p-core/0.5.1/798072d4064cfc48c8a94eed87aaad054c1da1cd#798072d4064cfc48c8a94eed87aaad054c1da1cd"
+  integrity sha512-c21jbvcowznC8xBDucLTcO6IacTNV8jNRu3sBFz0UDrw3ev4Timgvr6b9GFDuk89VFd0mKWWIQGtnbcVA5PBqQ==
+  dependencies:
+    "@sinclair/typebox" "^0.24.44"
+    axios "^0.27.2"
 
 abort-controller@^3.0.0:
   version "3.0.0"

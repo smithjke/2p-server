@@ -1,5 +1,5 @@
 {
-  "name": "2p-server",
+  "name": "@smithjke/2p-server",
   "version": "0.1.4",
   "description": "",
   "main": "dist/index.ts",
@@ -29,12 +29,12 @@
   },
   "files": [
     "dist",
-    "dist/**/!(*.tsbuildinfo)"
+    "dist/**/!(*.tsbuildinfo)",
+    "api",
+    "crud",
+    "mongo"
   ],
   "scripts": {
-    "prepack": "echo ABOBA prepare >> aboba.txt",
-    "prepare": "echo ABOBA prepare >> aboba.txt",
-    "preinstall": "echo ABOBA preinstall >> aboba.txt && tsc",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "up:major": "yarn version --major && git push && git push --tags",
@@ -55,7 +55,7 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "2p-core": "github:smithjke/2p-core#v0.3.11",
+    "@smithjke/2p-core": "0.5.1",
     "fastify": "^4.6.0"
   }
 }

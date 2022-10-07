@@ -1,5 +1,5 @@
 {
-  "name": "2p-core/mongo",
+  "name": "@smithjke/2p-server/mongo",
   "types": "../dist/mongo/index.d.ts",
   "main": "../dist/mongo/index.js",
   "sideEffects": false

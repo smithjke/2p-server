@@ -1,15 +1,23 @@
 import { FastifyInstance, RouteOptions } from 'fastify';
-import TPCore from '2p-core';
+import {
+  AnyCrudType,
+  crudApiConfig,
+  CrudListQuery,
+  CrudSchema,
+  CrudService,
+  makeCrudListQuerySchema,
+  makeCrudListResultSchema
+} from '@smithjke/2p-core/crud';
 
-export type FindOneRouteProps<T extends TPCore.crud.AnyCrudType> = {
-  crudService: TPCore.crud.CrudService<T>;
-  crudSchema: TPCore.crud.CrudSchema;
+export type FindOneRouteProps<T extends AnyCrudType> = {
+  crudService: CrudService<T>;
+  crudSchema: CrudSchema;
 };
 
-export function makeFindOneRoute<T extends TPCore.crud.AnyCrudType>(props: FindOneRouteProps<T>): RouteOptions {
+export function makeFindOneRoute<T extends AnyCrudType>(props: FindOneRouteProps<T>): RouteOptions {
   return {
-    method: TPCore.crud.crudApiConfig.findOne.method as any,
-    url: TPCore.crud.crudApiConfig.findOne.url,
+    method: crudApiConfig.findOne.method as any,
+    url: crudApiConfig.findOne.url,
     schema: {
       params: props.crudSchema.entityKey,
       response: {
@@ -27,39 +35,39 @@ export function makeFindOneRoute<T extends TPCore.crud.AnyCrudType>(props: FindO
   };
 }
 
-export type FindAllRouteProps<T extends TPCore.crud.AnyCrudType> = {
-  crudService: TPCore.crud.CrudService<T>;
-  crudSchema: TPCore.crud.CrudSchema;
+export type FindAllRouteProps<T extends AnyCrudType> = {
+  crudService: CrudService<T>;
+  crudSchema: CrudSchema;
 };
 
-export function makeFindAllRoute<T extends TPCore.crud.AnyCrudType>(props: FindAllRouteProps<T>): RouteOptions {
+export function makeFindAllRoute<T extends AnyCrudType>(props: FindAllRouteProps<T>): RouteOptions {
   return {
-    method: TPCore.crud.crudApiConfig.findAll.method as any,
-    url: TPCore.crud.crudApiConfig.findAll.url,
+    method: crudApiConfig.findAll.method as any,
+    url: crudApiConfig.findAll.url,
     schema: {
-      querystring: TPCore.crud.makeCrudListQuerySchema(
+      querystring: makeCrudListQuerySchema(
         props.crudSchema.entityOrderField,
         props.crudSchema.entityFilter,
         ),
       response: {
-        200: TPCore.crud.makeCrudListResultSchema(props.crudSchema.listedEntity),
+        200: makeCrudListResultSchema(props.crudSchema.listedEntity),
       },
     },
     handler: async (request, reply) => {
-      return props.crudService.findAll(request.query as TPCore.crud.CrudListQuery);
+      return props.crudService.findAll(request.query as CrudListQuery);
     },
   };
 }
 
-export type CreateRouteProps<T extends TPCore.crud.AnyCrudType> = {
-  crudService: TPCore.crud.CrudService<T>;
-  crudSchema: TPCore.crud.CrudSchema;
+export type CreateRouteProps<T extends AnyCrudType> = {
+  crudService: CrudService<T>;
+  crudSchema: CrudSchema;
 };
 
-export function makeCreateRoute<T extends TPCore.crud.AnyCrudType>(props: CreateRouteProps<T>): RouteOptions {
+export function makeCreateRoute<T extends AnyCrudType>(props: CreateRouteProps<T>): RouteOptions {
   return {
-    method: TPCore.crud.crudApiConfig.create.method as any,
-    url: TPCore.crud.crudApiConfig.create.url,
+    method: crudApiConfig.create.method as any,
+    url: crudApiConfig.create.url,
     schema: {
       body: props.crudSchema.createEntity,
       response: {
@@ -72,15 +80,15 @@ export function makeCreateRoute<T extends TPCore.crud.AnyCrudType>(props: Create
   };
 }
 
-export type UpdateRouteProps<T extends TPCore.crud.AnyCrudType> = {
-  crudService: TPCore.crud.CrudService<T>;
-  crudSchema: TPCore.crud.CrudSchema;
+export type UpdateRouteProps<T extends AnyCrudType> = {
+  crudService: CrudService<T>;
+  crudSchema: CrudSchema;
 };
 
-export function makeUpdateRoute<T extends TPCore.crud.AnyCrudType>(props: UpdateRouteProps<T>): RouteOptions {
+export function makeUpdateRoute<T extends AnyCrudType>(props: UpdateRouteProps<T>): RouteOptions {
   return {
-    method: TPCore.crud.crudApiConfig.update.method as any,
-    url: TPCore.crud.crudApiConfig.update.url,
+    method: crudApiConfig.update.method as any,
+    url: crudApiConfig.update.url,
     schema: {
       params: props.crudSchema.entityKey,
       body: props.crudSchema.updateEntity,
@@ -97,15 +105,15 @@ export function makeUpdateRoute<T extends TPCore.crud.AnyCrudType>(props: Update
   };
 }
 
-export type RemoveRouteProps<T extends TPCore.crud.AnyCrudType> = {
-  crudService: TPCore.crud.CrudService<T>;
-  crudSchema: TPCore.crud.CrudSchema;
+export type RemoveRouteProps<T extends AnyCrudType> = {
+  crudService: CrudService<T>;
+  crudSchema: CrudSchema;
 };
 
-export function makeRemoveRoute<T extends TPCore.crud.AnyCrudType>(props: RemoveRouteProps<T>): RouteOptions {
+export function makeRemoveRoute<T extends AnyCrudType>(props: RemoveRouteProps<T>): RouteOptions {
   return {
-    method: TPCore.crud.crudApiConfig.remove.method as any,
-    url: TPCore.crud.crudApiConfig.remove.url,
+    method: crudApiConfig.remove.method as any,
+    url: crudApiConfig.remove.url,
     schema: {
       params: props.crudSchema.entityKey,
     },
@@ -115,13 +123,13 @@ export function makeRemoveRoute<T extends TPCore.crud.AnyCrudType>(props: Remove
   };
 }
 
-export type RegisterCrudRoutesProps<T extends TPCore.crud.AnyCrudType> = {
+export type RegisterCrudRoutesProps<T extends AnyCrudType> = {
   fastifyInstance: FastifyInstance;
-  crudService: TPCore.crud.CrudService<T>;
-  crudSchema: TPCore.crud.CrudSchema;
+  crudService: CrudService<T>;
+  crudSchema: CrudSchema;
 };
 
-export function registerCrudRoutes<T extends TPCore.crud.AnyCrudType>(props: RegisterCrudRoutesProps<T>) {
+export function registerCrudRoutes<T extends AnyCrudType>(props: RegisterCrudRoutesProps<T>) {
   const {
     fastifyInstance,
     crudService,

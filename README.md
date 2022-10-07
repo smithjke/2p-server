@@ -1,1 +1,1 @@
-# 2p-server
+# @smithjke/2p-server
