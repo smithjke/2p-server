@@ -1,3 +1,9 @@
-import * as TPServer from './all';
+import * as api from './api';
+import * as crud from './crud';
+import * as mongo from './mongo';
 
-export default TPServer;
+export default {
+  api,
+  crud,
+  mongo,
+};
