@@ -1,7 +1,6 @@
 import { AnyCrudType, crudApiConfig } from '@smithjke/2p-core/crud';
 import { RouteOptions } from 'fastify';
 import { CrudRouteProps } from '../common';
-import { getRequestMetaData } from './get-request-meta-data';
 
 export function makeCreateRoute<T extends AnyCrudType>(props: CrudRouteProps<T>): RouteOptions {
   return {
@@ -15,7 +14,7 @@ export function makeCreateRoute<T extends AnyCrudType>(props: CrudRouteProps<T>)
     },
     handler: async (request, reply) => props.crudService.create(
       request.body as object,
-      getRequestMetaData(request),
+      request,
     ),
   };
 }

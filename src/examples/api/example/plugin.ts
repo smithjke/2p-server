@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify';
 import { Schema } from '@smithjke/2p-core/examples';
-import { getRequestMetaData, registerCrudRoutes } from '../../../crud';
+import { registerCrudRoutes } from '../../../crud';
 import { useExampleService } from './di';
 
 export function plugin(fastifyInstance: FastifyInstance, opts: any, done: () => void) {
@@ -23,7 +23,7 @@ export function plugin(fastifyInstance: FastifyInstance, opts: any, done: () => 
     schema: {},
     handler: async (request, reply) => crudService.superCreate(
       request.body as Schema.Example.CreateEntity,
-      getRequestMetaData(request),
+      request,
     ),
   });
 
@@ -34,7 +34,7 @@ export function plugin(fastifyInstance: FastifyInstance, opts: any, done: () => 
     handler: async (request, reply) => crudService.superUpdate(
       request.body as Schema.Example.UpdateEntity,
       request.params as Schema.Example.EntityKey,
-      getRequestMetaData(request),
+      request,
     ),
   });
 

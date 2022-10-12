@@ -7,7 +7,6 @@ import {
 } from '@smithjke/2p-core/crud';
 import { RouteOptions } from 'fastify';
 import { CrudRouteProps } from '../common';
-import { getRequestMetaData } from './get-request-meta-data';
 
 export function makeFindAllRoute<T extends AnyCrudType>(props: CrudRouteProps<T>): RouteOptions {
   return {
@@ -25,7 +24,7 @@ export function makeFindAllRoute<T extends AnyCrudType>(props: CrudRouteProps<T>
     handler: async (request, reply) => {
       return props.crudService.findAll(
         request.query as CrudFindAllQuery,
-        getRequestMetaData(request),
+        request,
       );
     },
   };

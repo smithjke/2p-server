@@ -1,7 +1,6 @@
 import { AnyCrudType, crudApiConfig } from '@smithjke/2p-core/crud';
 import { RouteOptions } from 'fastify';
 import { CrudRouteProps } from '../common';
-import { getRequestMetaData } from './get-request-meta-data';
 
 export function makeFindOneRoute<T extends AnyCrudType>(props: CrudRouteProps<T>): RouteOptions {
   return {
@@ -17,7 +16,7 @@ export function makeFindOneRoute<T extends AnyCrudType>(props: CrudRouteProps<T>
       try {
         return props.crudService.findOne(
           request.params as object,
-          getRequestMetaData(request),
+          request,
         );
       } catch (e) {
         reply.code(404);
