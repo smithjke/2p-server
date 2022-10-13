@@ -33,10 +33,10 @@
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.44.tgz#0a0aa3bf4a155a678418527342a3ee84bd8caa5c"
   integrity sha512-ka0W0KN5i6LfrSocduwliMMpqVgohtPFidKdMEOUjoOFCHcOOYkKsPRxfs5f15oPNHTm6ERAm0GV/+/LTKeiWg==
 
-"@smithjke/2p-core@^1.0.5":
-  version "1.0.5"
-  resolved "https://npm.pkg.github.com/download/@smithjke/2p-core/1.0.5/65aa17a298460990d76bbae3434f3a192b093f68#65aa17a298460990d76bbae3434f3a192b093f68"
-  integrity sha512-QRKK/+/tIzBNu8hxPZfB1sOKZPP9OmbseRfpNYkjQ3RgY3vfubNm8VoqioF8W+l32steNF65ORvTuY5vVBxbhQ==
+"@smithjke/2p-core@^1.1.2":
+  version "1.1.2"
+  resolved "https://npm.pkg.github.com/download/@smithjke/2p-core/1.1.2/9bb5b899949eb3de30bd42c36d6cd8daa7fa7d57#9bb5b899949eb3de30bd42c36d6cd8daa7fa7d57"
+  integrity sha512-4Qg/8GgywLkYgAPHnXB/U4Lmxcmg6oyUtYwfMlg1mJuARxsPY6fjK9e/HUJ1KYXjfTeK38c+KRDNxWdFj3b5mA==
   dependencies:
     "@sinclair/typebox" "^0.24.44"
     axios "^0.27.2"

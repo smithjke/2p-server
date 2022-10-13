@@ -1,5 +1,5 @@
 import { AnyCrudType, crudApiConfig } from '@smithjke/2p-core/crud';
-import { RouteOptions } from 'fastify';
+import { FastifyReply, FastifyRequest, RouteOptions } from 'fastify';
 import { CrudRouteProps } from '../common';
 
 export function makeFindOneRoute<T extends AnyCrudType>(props: CrudRouteProps<T>): RouteOptions {
@@ -12,11 +12,12 @@ export function makeFindOneRoute<T extends AnyCrudType>(props: CrudRouteProps<T>
         200: props.crudSchema.singleEntity,
       },
     },
-    handler: async (request, reply) => {
+    handler: async (request: FastifyRequest, reply: FastifyReply) => {
       try {
-        return props.crudService.findOne(
+        const crudFastifyService = props.useCrudFastifyService();
+        crudFastifyService.setRequest(request);
+        return crudFastifyService.findOne(
           request.params as object,
-          request,
         );
       } catch (e) {
         reply.code(404);

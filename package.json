@@ -62,7 +62,7 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@smithjke/2p-core": "^1.0.5",
+    "@smithjke/2p-core": "^1.1.2",
     "fastify": "^4.6.0"
   }
 }

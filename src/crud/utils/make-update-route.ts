@@ -1,5 +1,5 @@
 import { AnyCrudType, crudApiConfig } from '@smithjke/2p-core/crud';
-import { RouteOptions } from 'fastify';
+import { FastifyRequest, RouteOptions } from 'fastify';
 import { CrudRouteProps } from '../common';
 
 export function makeUpdateRoute<T extends AnyCrudType>(props: CrudRouteProps<T>): RouteOptions {
@@ -13,11 +13,12 @@ export function makeUpdateRoute<T extends AnyCrudType>(props: CrudRouteProps<T>)
         200: props.crudSchema.singleEntity,
       },
     },
-    handler: async (request, reply) => {
-      return props.crudService.update(
+    handler: async (request: FastifyRequest) => {
+      const crudFastifyService = props.useCrudFastifyService();
+      crudFastifyService.setRequest(request);
+      return crudFastifyService.update(
         request.body as object,
         request.params as object,
-        request,
       );
     },
   };

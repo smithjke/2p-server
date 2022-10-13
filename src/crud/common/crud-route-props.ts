@@ -1,6 +1,7 @@
-import { AnyCrudType, CrudSchema, CrudService } from '@smithjke/2p-core/crud';
+import { AnyCrudType, CrudSchema } from '@smithjke/2p-core/crud';
+import { CrudFastifyService } from '../services';
 
 export type CrudRouteProps<T extends AnyCrudType> = {
-  crudService: CrudService<T>;
   crudSchema: CrudSchema;
+  useCrudFastifyService: () => CrudFastifyService<T>;
 };
