@@ -1,1 +1,1 @@
-export * from './fastify-service';
+export * from './fastify.service';

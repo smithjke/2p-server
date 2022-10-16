@@ -19,8 +19,8 @@ export function makeFindOneRoute<T extends AnyCrudType>(props: CrudRouteProps<T>
         return crudFastifyService.findOne(
           request.params as object,
         );
-      } catch (e) {
-        reply.code(404);
+      } catch (e: any) {
+        reply.code(e?.code || 500);
         throw e;
       }
     },
